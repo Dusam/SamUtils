@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SamUtils'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'The common tools with Swift.'
 
 # This description is used to generate tags and improve search results.
@@ -30,8 +30,9 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://github.com/Dusam'
 
   s.ios.deployment_target = '11.0'
+  s.swift_version = "5.7"
 
-  s.source_files = 'SamUtils/**/*'
+  s.source_files = 'SamUtils/**/*.swift'
 
   s.dependency 'Alamofire'
   s.dependency 'SwifterSwift'

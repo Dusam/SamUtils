@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 
+
+public typealias apiCompletionHandler = (_ statusCode: Int?, _ dataModel: Any?) -> Void
 /// Base API Method
 ///
 /// Recommended to use inheritance.
@@ -40,7 +42,7 @@ open class BaseAPI: NSObject {
                                         encoding: ParameterEncoding = JSONEncoding.default,
                                         headers: HTTPHeaders? = nil,
                                         model: T.Type,
-                                        completionHandler: @escaping (_ statusCode: Int?, _ dataModel: Any?) -> Void) {
+                                        completionHandler: @escaping apiCompletionHandler) {
         
         sharedSession.request(url,
                               method: method,
