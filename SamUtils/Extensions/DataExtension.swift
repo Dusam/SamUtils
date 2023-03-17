@@ -35,7 +35,7 @@ public extension Data {
     ///     let originalData: [UInt8] = [0, 0, 0, 1, 24, 25, 0, 0, 0, 1, 55, 65]
     ///     let separatorData: [UInt8] = [0, 0, 0, 1]
     ///     let splitDatas = originalData.split(Data(separatorData))
-    ///     // splitDatas = [Data([24, 25]), Data([55, 65])]
+    ///     print(splitDatas) // [Data([24, 25]), Data([55, 65])]
     ///
     /// - Parameters:
     ///   - separator: Separator Data

@@ -14,6 +14,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        BluetoothManager.shared.startScan { devices in
+            print(devices)
+        }
     }
 }
 

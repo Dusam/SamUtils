@@ -13,7 +13,7 @@ public extension String {
     ///
     ///     let text = "Hello World!"
     ///     let subString = text.substring(0, 5)
-    ///     // subString = "Hello"
+    ///     print(subString) // "Hello"
     func substring(_ start: Int, _ end: Int) -> String {
         return (self as NSString).substring(with: NSMakeRange(start, end - start))
     }
@@ -56,6 +56,16 @@ public extension String {
             return int
         }
         return 0
+    }
+    
+    /// Join separator to String
+    ///
+    ///     let string = "6922C870"
+    ///     let joinString = string.joinSeparator(every: 2, with: ":")
+    ///     print(joinString) // 69:22:C8:70
+    ///
+    func joinSeparator(every stride: Int = 2, with separator: Character = " ") -> String {
+        return String(enumerated().map { $0 > 0 && $0 % stride == 0 ? [separator, $1] : [$1]}.joined())
     }
     
     /// Validate Id number.

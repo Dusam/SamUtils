@@ -25,7 +25,7 @@ public extension UInt8 {
     ///
     ///     let byte: UInt8 = 0x01
     ///     let bits = byte.bits()
-    ///     // bits = [0, 0, 0, 1, 1, 1, 1, 1]
+    ///     print(bits) // [0, 0, 0, 1, 1, 1, 1, 1]
     ///
     func bits() -> [Bit] {
         var byte = self

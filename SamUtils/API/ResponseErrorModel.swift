@@ -7,6 +7,10 @@
 
 import Foundation
 
-public struct ResponseErrorModel: Codable {
+public struct ResponseErrorModel: Codable, CustomDebugStringConvertible {
     let result: String
+    
+    public var debugDescription: String {
+        return "responseError: \(result)"
+    }
 }
