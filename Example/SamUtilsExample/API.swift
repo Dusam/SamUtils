@@ -15,4 +15,12 @@ class API: BaseAPI {
     private override init() {
         
     }
+    
+    func test() {
+        sendRequest(url: "",
+                    method: .post,
+                    parameters: ["":""],
+                    model: ResponseErrorModel.self) { statusCode, dataModel in
+        }
+    }
 }

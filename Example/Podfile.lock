@@ -1,7 +1,22 @@
 PODS:
   - Alamofire (5.6.4)
   - IQKeyboardManagerSwift (6.5.11)
-  - SamUtils (0.0.1):
+  - SamUtils (0.0.3):
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - SamUtils/CommonTools (= 0.0.3)
+    - SwifterSwift
+  - SamUtils/CommonTools (0.0.3):
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - SamUtils/CommonTools/API (= 0.0.3)
+    - SamUtils/CommonTools/Extensions (= 0.0.3)
+    - SwifterSwift
+  - SamUtils/CommonTools/API (0.0.3):
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - SwifterSwift
+  - SamUtils/CommonTools/Extensions (0.0.3):
     - Alamofire
     - IQKeyboardManagerSwift
     - SwifterSwift
@@ -32,7 +47,7 @@ PODS:
   - SwifterSwift/UIKit (5.2.0)
 
 DEPENDENCIES:
-  - SamUtils (from `../`)
+  - SamUtils (from `../SamUtils.podspec`)
 
 SPEC REPOS:
   trunk:
@@ -42,14 +57,14 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   SamUtils:
-    :path: "../"
+    :podspec: "../SamUtils.podspec"
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
-  SamUtils: 6817628199897bf4b61381d4948581d9bea02a56
+  SamUtils: c1fa6f6de2647ce9536b3d131f7524cfa2a14f78
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
 
-PODFILE CHECKSUM: e68ea7c46f808fd4e17ac4c5665c786d12a42295
+PODFILE CHECKSUM: 5e17beb05dc432ddd9f4147c359b60d1a6d676cd
 
 COCOAPODS: 1.12.0

@@ -17,7 +17,11 @@ SamUtils is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'SamUtils'
+# Not include Bluetooth, just include common tools.
+pod 'SamUtils' 
+
+# If want to use Bluetooth, add below line to pod file.
+pod 'SamUtils/Bluetooth' 
 ```
 
 ## Author

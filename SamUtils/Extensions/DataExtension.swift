@@ -13,7 +13,6 @@ public extension Data {
     
     /// Convert PCM 16bit data to AVAudioPCMBuffer
     ///
-    ///
     ///     let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: 8000, channels: 1, interleaved: false)!
     ///     let playBuffer = Data().convertPCMtoFloat32PCMBuffer(byFormat: format)
     ///
@@ -35,7 +34,7 @@ public extension Data {
     ///     let originalData: [UInt8] = [0, 0, 0, 1, 24, 25, 0, 0, 0, 1, 55, 65]
     ///     let separatorData: [UInt8] = [0, 0, 0, 1]
     ///     let splitDatas = originalData.split(Data(separatorData))
-    ///     // splitDatas = [Data([24, 25]), Data([55, 65])]
+    ///     print(splitDatas) // [Data([24, 25]), Data([55, 65])]
     ///
     /// - Parameters:
     ///   - separator: Separator Data
