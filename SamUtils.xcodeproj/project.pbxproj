@@ -107,8 +107,8 @@
 				686FA3B529BACAA800DDC5A6 /* SamUtils.h */,
 				686FA43F29BAD5C400DDC5A6 /* GlobalUtils.swift */,
 				686FA44329BADB0B00DDC5A6 /* API */,
-				6825A10F29C40F2800D08755 /* Bluetooth */,
 				686FA43229BACF0200DDC5A6 /* Extensions */,
+				6825A10F29C40F2800D08755 /* Bluetooth */,
 			);
 			path = SamUtils;
 			sourceTree = "<group>";

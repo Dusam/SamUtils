@@ -10,7 +10,7 @@ import Alamofire
 
 
 public typealias apiCompletionHandler = (_ statusCode: Int?, _ dataModel: Any?) -> Void
-/// Base API Method
+/// Base API
 ///
 /// Recommended to use inheritance.
 open class BaseAPI: NSObject {

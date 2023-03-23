@@ -9,9 +9,10 @@ import Foundation
 import CoreBluetooth
 
 public typealias bluetoothDeviceHandler = ([BluetoothDevice]) -> Void
+public typealias DeviceConnectHandler = (_ isConnected: Bool) -> Void
+
 
 public protocol BaseBluetoothDelegate: AnyObject {
-    func isConnected(_ isConnected: Bool)
     func receiveData(_ data: Data?)
 }
 
@@ -29,14 +30,28 @@ open class BaseBluetoothManager: NSObject {
     private var notifyCharactic: CBCharacteristic?
     
     private var devicesHandler: bluetoothDeviceHandler?
+    private var connectHandler: DeviceConnectHandler?
     private var peripherals: [BluetoothDevice] = []
     
-    private var isConnect = false
-    
-    public weak var delegate: BaseBluetoothDelegate?
+    private weak var delegate: BaseBluetoothDelegate?
+
+    /// Device is connect or not.
+    public var isConnected = false
     
     public override init() {
         super.init()
+        
+    }
+    
+    /// required to set.
+    public func setUpDelegate(delegate: BaseBluetoothDelegate) {
+        self.delegate = delegate
+    }
+    
+    private func checkDelegate() {
+        if self.delegate == nil {
+            print("BaseBluetoothManager: delegate must be set! use setUpDelegate func to set.")
+        }
     }
     
     deinit {
@@ -49,11 +64,17 @@ open class BaseBluetoothManager: NSObject {
         }
         
         centralManager = nil
+        writeCharactic = nil
         notifyCharactic = nil
     }
 }
 
 public extension BaseBluetoothManager {
+    /// Set up Bluetooth device service or characteristic UUID.
+    ///
+    ///     // Example
+    ///     let serviceUUID = "180D"
+    ///     let notifyUUID = "2A37"
     func setUUID(serviceUUID: String = "", notifyUUID: String, writeUUID: String) {
         self.serviceUUID = serviceUUID
         self.notifyUUID = notifyUUID
@@ -71,6 +92,7 @@ public extension BaseBluetoothManager {
         }
     }
     
+    /// Start scan bluetooth device.
     func startScan(with devicesHandler: @escaping bluetoothDeviceHandler) {
         peripherals = []
         centralManager?.stopScan()
@@ -78,13 +100,12 @@ public extension BaseBluetoothManager {
         
         if centralManager == nil {
             centralManager = CBCentralManager(delegate: self, queue: nil)
-            
         } else {
             scanPeripherals()
         }
-        
     }
     
+    /// Stop scan bluetooth device.
     func stopScan() {
         if let centralManager = centralManager {
             centralManager.stopScan()
@@ -92,12 +113,19 @@ public extension BaseBluetoothManager {
         }
     }
     
-    func connectPeripheral(with uuid: String) {
+    /// Connect to bluetooth deivce with device uuid and handler.
+    func connectPeripheral(withUUID uuid: String, handler: DeviceConnectHandler?) {
+        self.connectHandler = handler
+        connectPeripheral(withUUID: uuid)
+    }
+    
+    /// Connect to bluetooth deivce with device uuid.
+    func connectPeripheral(withUUID uuid: String) {
         guard let centralManager = centralManager, centralManager.state == .poweredOn else {
             return
         }
         
-        isConnect = false
+        isConnected = false
         
         if let uuid = UUID(uuidString: uuid) {
             let peripheralArray = centralManager.retrievePeripherals(withIdentifiers: [uuid])
@@ -120,6 +148,7 @@ public extension BaseBluetoothManager {
         }
     }
     
+    /// Disconnect to bluetooth deivce with device uuid.
     func disConnectPeripheral(withUUID uuid: String?) {
         if let peripheral = connectPeripheral, let notifyCharactic = notifyCharactic {
             peripheral.setNotifyValue(false, for: notifyCharactic)
@@ -131,15 +160,26 @@ public extension BaseBluetoothManager {
         }
     }
     
+    /// Send data to bluetooth device
+    ///
+    /// if data size > 20, the method will split data to two data slice, first slice size = 20,  send first slice and automatic send left over data again, until data size <= 20.
+    ///
+    ///     // Example usgae
+    ///     let hexData: [UInt8] = [0x68, 0x10, 0x20, 0x30]
+    ///     let data = Data(hexData)
+    ///     sendData(data, .withoutResponse)
+    ///
+    /// - Parameters:
+    ///   - data: Hexadecimal need to convert to Data.
+    ///   - writeType: Write type, need response or don't need response.
     func sendData(_ data: Data, with writeType: CBCharacteristicWriteType) {
         guard let centerManger = centralManager,
               let peripheral = connectPeripheral,
               let writeCharactic = writeCharactic,
               centerManger.state == .poweredOn,
-              isConnect
+              isConnected
         else {
             return
-            
         }
         
         if data.count > 20 {
@@ -186,7 +226,7 @@ extension BaseBluetoothManager: CBCentralManagerDelegate {
         connectPeripheral?.discoverServices(nil)
     }
     
-    //連接設備失敗
+    // 連接設備失敗
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         if let error = error {
             #if DEBUG
@@ -196,43 +236,45 @@ extension BaseBluetoothManager: CBCentralManagerDelegate {
     }
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        checkDelegate()
+        
         notifyCharactic = nil
         connectPeripheral = nil
         
-        isConnect = false
-        delegate?.isConnected(false)
+        isConnected = false
+        connectHandler?(false)
     }
     
 }
 
 extension BaseBluetoothManager: CBPeripheralDelegate {
     
-    //掃描設備服務
+    // 掃描設備服務
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        guard error == nil else {
+        guard error == nil, let services = peripheral.services else {
             #if DEBUG
             print("\(TAG) DiscoverServices error: \(error!)")
             #endif
             return
         }
         
-        for service in peripheral.services! {
+        for service in services {
             if service.uuid.uuidString == serviceUUID {
                 peripheral.discoverCharacteristics(nil, for: service)
             }
         }
     }
     
-    //掃描服務特徵
+    // 掃描服務特徵
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        guard error == nil else {
+        guard error == nil, let characteristics = service.characteristics else {
             #if DEBUG
             print("\(TAG) DiscoverCharacteristics error: \(error!)")
             #endif
             return
         }
         
-        for characteristic in service.characteristics! {
+        for characteristic in characteristics {
             let uuidString = characteristic.uuid.uuidString
             
             if uuidString == writeUUID {
@@ -243,26 +285,27 @@ extension BaseBluetoothManager: CBPeripheralDelegate {
                 notifyCharactic = characteristic
                 peripheral.setNotifyValue(true, for: characteristic)
             }
-            
         }
         
-        isConnect = true
-        delegate?.isConnected(true)
+        isConnected = true
+        
+        checkDelegate()
+        connectHandler?(true)
         
     }
     
-    //設備回傳資料時方法
+    // 設備回傳資料時方法
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        guard error == nil else {
+        guard error == nil, let requestData = characteristic.value else {
             return
         }
         
-        if let requestData = characteristic.value {
-            delegate?.receiveData(requestData)
-        }
+        checkDelegate()
+        
+        delegate?.receiveData(requestData)
     }
     
-    //寫入資料
+    // 寫入資料
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         if error != nil {
             #if DEBUG

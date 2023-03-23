@@ -8,18 +8,21 @@
 import Foundation
 import SamUtils
 
-class BluetoothManager: BaseBluetoothManager {
+class BluetoothManagerSample: BaseBluetoothManager {
     
-    static let shared = BluetoothManager()
+    static let shared = BluetoothManagerSample()
+    
+    private let TAG = "BluetoothManager"
     
     private override init() {
         super.init()
         
+        // delegate is required.
+        setUpDelegate(delegate: self)
         setUUID(serviceUUID: "", notifyUUID: "", writeUUID: "")
-        self.delegate = self
     }
     
-    func setTime() {
+    func setTime() {        
         let timeData = [0x02].map { UInt8($0) }
         let data = Data(bytes: timeData, count: timeData.count)
         sendData(data, with: .withoutResponse)
@@ -27,12 +30,8 @@ class BluetoothManager: BaseBluetoothManager {
     
 }
 
-extension BluetoothManager: BaseBluetoothDelegate {
-    func isConnected(_ isConnected: Bool) {
-        
-    }
-    
+extension BluetoothManagerSample: BaseBluetoothDelegate {
     func receiveData(_ data: Data?) {
-        
+        // TODO: Analysis data
     }
 }

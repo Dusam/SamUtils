@@ -13,7 +13,6 @@ public extension Data {
     
     /// Convert PCM 16bit data to AVAudioPCMBuffer
     ///
-    ///
     ///     let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: 8000, channels: 1, interleaved: false)!
     ///     let playBuffer = Data().convertPCMtoFloat32PCMBuffer(byFormat: format)
     ///

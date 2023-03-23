@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SamUtils'
-  s.version          = '0.0.2'
+  s.version          = '0.0.3'
   s.summary          = 'The common tools with Swift.'
 
 # This description is used to generate tags and improve search results.
@@ -32,7 +32,12 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '11.0'
   s.swift_version = "5.7"
 
+  s.exclude_files = 'SamUtils/Bluetooth/*.swift'
   s.source_files = 'SamUtils/**/*.swift'
+
+  s.subspec 'Bluetooth' do |sp|
+    sp.source_files  = 'SamUtils/Bluetooth/*.swift'
+  end
 
   s.dependency 'Alamofire'
   s.dependency 'SwifterSwift'

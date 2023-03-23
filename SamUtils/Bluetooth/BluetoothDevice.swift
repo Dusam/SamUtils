@@ -9,8 +9,8 @@ import Foundation
 
 public struct BluetoothDevice: CustomDebugStringConvertible {
     
-    var deviceName: String
-    var deviceUUID: String
+    public var deviceName: String
+    public var deviceUUID: String
     
     public var debugDescription: String {
         return "deviceName: \(deviceName), deviceUUID: \(deviceUUID)"

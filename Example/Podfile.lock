@@ -1,7 +1,12 @@
 PODS:
   - Alamofire (5.6.4)
   - IQKeyboardManagerSwift (6.5.11)
-  - SamUtils (0.0.2):
+  - SamUtils (0.0.3):
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - SamUtils/Bluetooth (= 0.0.3)
+    - SwifterSwift
+  - SamUtils/Bluetooth (0.0.3):
     - Alamofire
     - IQKeyboardManagerSwift
     - SwifterSwift
@@ -47,7 +52,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
-  SamUtils: d6de07f0203a605b5067da2fff7615f802568971
+  SamUtils: 2c91af8923f6c40ad40f73f888f9ebc77e21b75f
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
 
 PODFILE CHECKSUM: cbd18e2876101d6c625f1a16236becc8b022508a
