@@ -32,8 +32,21 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '11.0'
   s.swift_version = "5.7"
 
-  s.exclude_files = 'SamUtils/Bluetooth/*.swift'
-  s.source_files = 'SamUtils/**/*.swift'
+  s.default_subspec = 'CommonTools'
+
+  s.subspec 'CommonTools' do |sp|
+    sp.source_files  = 'SamUtils/*.swift'
+    sp.exclude_files = 'SamUtils/Bluetooth/*.swift'
+
+    sp.subspec 'API' do |spp|
+      spp.source_files = 'SamUtils/API/*.swift'
+    end
+
+    sp.subspec 'Extensions' do |spp|
+      spp.source_files = 'SamUtils/Extensions/*.swift'
+    end
+
+  end
 
   s.subspec 'Bluetooth' do |sp|
     sp.source_files  = 'SamUtils/Bluetooth/*.swift'

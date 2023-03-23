@@ -3,7 +3,8 @@ use_frameworks!
 platform :ios, '12.0'
 
 target 'SamUtilsExample' do
-  pod 'SamUtils', :path => '../'
+  pod 'SamUtils', :podspec => '../SamUtils.podspec'
+#  pod 'SamUtils/Bluetooth', :podspec => '../SamUtils.podspec'
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|
