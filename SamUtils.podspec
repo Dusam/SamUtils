@@ -34,6 +34,7 @@ Pod::Spec.new do |s|
 
   s.default_subspec = 'CommonTools'
 
+  # Default
   s.subspec 'CommonTools' do |sp|
     sp.source_files  = 'SamUtils/*.swift'
     sp.exclude_files = 'SamUtils/Bluetooth/*.swift'
@@ -48,6 +49,7 @@ Pod::Spec.new do |s|
 
   end
 
+  # Introduce when needed
   s.subspec 'Bluetooth' do |sp|
     sp.source_files  = 'SamUtils/Bluetooth/*.swift'
   end

@@ -6,6 +6,10 @@ PODS:
     - IQKeyboardManagerSwift
     - SamUtils/CommonTools (= 0.0.3)
     - SwifterSwift
+  - SamUtils/Bluetooth (0.0.3):
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - SwifterSwift
   - SamUtils/CommonTools (0.0.3):
     - Alamofire
     - IQKeyboardManagerSwift
@@ -47,7 +51,8 @@ PODS:
   - SwifterSwift/UIKit (5.2.0)
 
 DEPENDENCIES:
-  - SamUtils (from `../SamUtils.podspec`)
+  - SamUtils (from `../`)
+  - SamUtils/Bluetooth (from `../`)
 
 SPEC REPOS:
   trunk:
@@ -57,7 +62,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   SamUtils:
-    :podspec: "../SamUtils.podspec"
+    :path: "../"
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
@@ -65,6 +70,6 @@ SPEC CHECKSUMS:
   SamUtils: c1fa6f6de2647ce9536b3d131f7524cfa2a14f78
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
 
-PODFILE CHECKSUM: 5e17beb05dc432ddd9f4147c359b60d1a6d676cd
+PODFILE CHECKSUM: b4b63bf3943385acc0ea124386b80b3cfce2a9b7
 
 COCOAPODS: 1.12.0
