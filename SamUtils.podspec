@@ -54,6 +54,11 @@ Pod::Spec.new do |s|
     sp.source_files  = 'SamUtils/Bluetooth/*.swift'
   end
 
+  # Introduce when needed
+  s.subspec 'SwiftUITools' do |sp|
+    sp.source_files  = 'SamUtils/SwiftUITools/**/*.swift'
+  end
+
   s.dependency 'Alamofire'
   s.dependency 'SwifterSwift'
   s.dependency 'IQKeyboardManagerSwift'
