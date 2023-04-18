@@ -71,8 +71,8 @@ public extension UIViewController {
             standard.backgroundColor = navigationColor
             
             self.navigationController?.navigationBar.tintColor = titleColor
-            self.navigationController?.navigationBar.standardAppearance = standard
-            self.navigationController?.navigationBar.scrollEdgeAppearance = standard
+//            self.navigationController?.navigationBar.standardAppearance = standard
+//            self.navigationController?.navigationBar.scrollEdgeAppearance = standard
             
             self.navigationController?.navigationBar.backItem?.title = ""
             let back = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
