@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/Dusam/SamUtils.git', :tag => s.version.to_s }
   s.social_media_url = 'https://github.com/Dusam'
 
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '13.0'
   s.swift_version = "5.7"
 
   s.default_subspec = 'CommonTools'
