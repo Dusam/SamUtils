@@ -8,7 +8,7 @@
 import Foundation
 import SwifterSwift
 
-extension UITableView {
+public extension UITableView {
     var snapshotLongImage: UIImage? {
         let savedContentOffset = contentOffset
         let savedFrame = frame
