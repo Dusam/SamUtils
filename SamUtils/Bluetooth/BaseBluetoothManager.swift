@@ -74,7 +74,7 @@ public extension BaseBluetoothManager {
     ///
     ///     // Example
     ///     let serviceUUID = "180D"
-    ///     let notifyUUID = "2A37"
+    ///     let notifyUUID = "FF02"
     func setUUID(serviceUUID: String = "", notifyUUID: String, writeUUID: String) {
         self.serviceUUID = serviceUUID
         self.notifyUUID = notifyUUID

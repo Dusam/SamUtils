@@ -31,6 +31,7 @@
 		4AFAC1AE96C553CC675B1586 /* Pods-SamUtils.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamUtils.release.xcconfig"; path = "Target Support Files/Pods-SamUtils/Pods-SamUtils.release.xcconfig"; sourceTree = "<group>"; };
 		6825A11229C410A000D08755 /* BluetoothDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothDevice.swift; sourceTree = "<group>"; };
 		6825A11429C43A8600D08755 /* BaseBluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBluetoothManager.swift; sourceTree = "<group>"; };
+		683F4E2029F91E6400C2D5E9 /* SwiftUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtension.swift; sourceTree = "<group>"; };
 		686FA3B229BACAA800DDC5A6 /* SamUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SamUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		686FA3B529BACAA800DDC5A6 /* SamUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SamUtils.h; sourceTree = "<group>"; };
 		686FA43329BACF6000DDC5A6 /* AVAudioPCMBufferExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVAudioPCMBufferExtension.swift; sourceTree = "<group>"; };
@@ -40,12 +41,12 @@
 		686FA43F29BAD5C400DDC5A6 /* GlobalUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUtils.swift; sourceTree = "<group>"; };
 		686FA44129BAD81800DDC5A6 /* BaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		686FA44429BADB2700DDC5A6 /* ResponseErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseErrorModel.swift; sourceTree = "<group>"; };
+		6895037B2A2DD27A0098A3D8 /* DrawnImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawnImageView.swift; sourceTree = "<group>"; };
 		68C6D08129EE7D4900022D89 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		68CDB64D29C04AB60076DAEB /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		68CDB64F29C04AE70076DAEB /* UIWindowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowExtension.swift; sourceTree = "<group>"; };
 		68CDB65329C04AFF0076DAEB /* UIntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIntExtension.swift; sourceTree = "<group>"; };
 		68CDB65529C04B200076DAEB /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		68E46E9029D127F900E6B3B7 /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
 		68E46E9129D1281400E6B3B7 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		68E46E9229D1281400E6B3B7 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		95471CBE9EFFAADFAEDC7C49 /* Pods_SamUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SamUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +118,7 @@
 				686FA43229BACF0200DDC5A6 /* Extensions */,
 				6825A10F29C40F2800D08755 /* Bluetooth */,
 				68E46E8E29D127C700E6B3B7 /* SwiftUITools */,
+				6895037A2A2DD25D0098A3D8 /* DrawImageView */,
 			);
 			path = SamUtils;
 			sourceTree = "<group>";
@@ -148,6 +150,14 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		6895037A2A2DD25D0098A3D8 /* DrawImageView */ = {
+			isa = PBXGroup;
+			children = (
+				6895037B2A2DD27A0098A3D8 /* DrawnImageView.swift */,
+			);
+			path = DrawImageView;
+			sourceTree = "<group>";
+		};
 		68E46E8E29D127C700E6B3B7 /* SwiftUITools */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,7 +169,7 @@
 		68E46E8F29D127E300E6B3B7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				68E46E9029D127F900E6B3B7 /* BindingExtension.swift */,
+				683F4E2029F91E6400C2D5E9 /* SwiftUIExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -418,7 +428,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = E2ZGHA3NG6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -433,7 +443,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.5;
+				MARKETING_VERSION = 0.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sam.du.SamUtils;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -450,7 +460,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = E2ZGHA3NG6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -465,7 +475,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.5;
+				MARKETING_VERSION = 0.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sam.du.SamUtils;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
