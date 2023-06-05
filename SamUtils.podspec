@@ -59,6 +59,11 @@ Pod::Spec.new do |s|
     sp.source_files  = 'SamUtils/SwiftUITools/**/*.swift'
   end
 
+  # Introduce when needed
+  s.subspec 'DrawImage' do |sp|
+    sp.source_files  = 'SamUtils/DrawImageView/**/*.swift'
+  end
+
   s.dependency 'Alamofire'
   s.dependency 'SwifterSwift'
   s.dependency 'IQKeyboardManagerSwift'

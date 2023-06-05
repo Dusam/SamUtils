@@ -41,6 +41,7 @@
 		686FA43F29BAD5C400DDC5A6 /* GlobalUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUtils.swift; sourceTree = "<group>"; };
 		686FA44129BAD81800DDC5A6 /* BaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		686FA44429BADB2700DDC5A6 /* ResponseErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseErrorModel.swift; sourceTree = "<group>"; };
+		6895037B2A2DD27A0098A3D8 /* DrawnImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawnImageView.swift; sourceTree = "<group>"; };
 		68C6D08129EE7D4900022D89 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		68CDB64D29C04AB60076DAEB /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		68CDB64F29C04AE70076DAEB /* UIWindowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowExtension.swift; sourceTree = "<group>"; };
@@ -117,6 +118,7 @@
 				686FA43229BACF0200DDC5A6 /* Extensions */,
 				6825A10F29C40F2800D08755 /* Bluetooth */,
 				68E46E8E29D127C700E6B3B7 /* SwiftUITools */,
+				6895037A2A2DD25D0098A3D8 /* DrawImageView */,
 			);
 			path = SamUtils;
 			sourceTree = "<group>";
@@ -146,6 +148,14 @@
 				686FA44429BADB2700DDC5A6 /* ResponseErrorModel.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		6895037A2A2DD25D0098A3D8 /* DrawImageView */ = {
+			isa = PBXGroup;
+			children = (
+				6895037B2A2DD27A0098A3D8 /* DrawnImageView.swift */,
+			);
+			path = DrawImageView;
 			sourceTree = "<group>";
 		};
 		68E46E8E29D127C700E6B3B7 /* SwiftUITools */ = {
