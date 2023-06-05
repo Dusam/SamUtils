@@ -12,7 +12,7 @@ import UIKit
 // MARK: Color
 
 extension Color {
-    @available(14.0, *)
+    @available(iOS 14.0, *)
     var isLight: Bool {
         var brightness: CGFloat = 0
         var alpha: CGFloat = 0
@@ -21,7 +21,7 @@ extension Color {
         return brightness > 0.6 ? true : false
     }
     
-    @available(14.0, *)
+    @available(iOS 14.0, *)
     var uiColor: UIColor {
         return UIColor(self)
     }

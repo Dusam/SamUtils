@@ -61,7 +61,7 @@ Pod::Spec.new do |s|
 
   # Introduce when needed
   s.subspec 'DrawImage' do |sp|
-    sp.source_files  = 'SamUtils/DrawImageView/**/*.swift'
+    sp.source_files  = 'SamUtils/DrawImage/**/*.swift'
   end
 
   s.dependency 'Alamofire'
