@@ -10,8 +10,8 @@ import SwiftUI
 import UIKit
 
 // MARK: Color
-@available(iOS 14.0, *)
 public extension Color {
+    @available(iOS 14.0, *)
     var isLight: Bool {
         var brightness: CGFloat = 0
         var alpha: CGFloat = 0
@@ -20,6 +20,7 @@ public extension Color {
         return brightness > 0.6 ? true : false
     }
     
+    @available(iOS 14.0, *)
     var uiColor: UIColor {
         return UIColor(self)
     }
