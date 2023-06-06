@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: Color
 
-extension Color {
+public extension Color {
     var isLight: Bool {
         var brightness: CGFloat = 0
         var alpha: CGFloat = 0
@@ -26,7 +26,7 @@ extension Color {
 }
 
 // MARK: Binding
-extension Binding {
+public extension Binding {
      func toUnwrapped<T>(defaultValue: T) -> Binding<T> where Value == Optional<T>  {
         Binding<T>(get: { self.wrappedValue ?? defaultValue }, set: { self.wrappedValue = $0 })
     }

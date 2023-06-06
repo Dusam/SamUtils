@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
  
-enum DrawMarkType: Int, CaseIterable {
+public enum DrawMarkType: Int, CaseIterable {
     case pencil, arrow, line, circle, circelFill, rectangle, rectangleFill
     
     var title: String {
@@ -31,7 +31,7 @@ enum DrawMarkType: Int, CaseIterable {
     }
 }
 
-class DrawnImageView: UIImageView {
+public class DrawnImageView: UIImageView {
     
     private lazy var path = UIBezierPath()
     private lazy var beginPoint = CGPoint.zero
@@ -43,21 +43,21 @@ class DrawnImageView: UIImageView {
     private var markType: DrawMarkType = .pencil
     private var isDraw: Bool = true
 
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(move))
         self.addGestureRecognizer(panRecognizer)
     }
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(move))
         self.addGestureRecognizer(panRecognizer)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
@@ -65,20 +65,20 @@ class DrawnImageView: UIImageView {
         isUserInteractionEnabled = true
     }
     
-    func setLineColor(_ color: UIColor) {
+    public func setLineColor(_ color: UIColor) {
             currentColor = color
             color.setStroke()
     }
     
-    func setDraw(_ isDraw: Bool) {
+    public func setDraw(_ isDraw: Bool) {
         self.isDraw = isDraw
     }
     
-    func setMarkType(_ type: DrawMarkType) {
+    public func setMarkType(_ type: DrawMarkType) {
         self.markType = type
     }
     
-    func nextLayer() {
+    public func nextLayer() {
         guard currentLayerIndex + 1 < self.layers.count else {
             return
         }
@@ -87,7 +87,7 @@ class DrawnImageView: UIImageView {
         layer.insertSublayer(newLayer, at: UInt32(currentLayerIndex))
     }
     
-    func previousLayer() {
+    public func previousLayer() {
         guard currentLayerIndex - 1 >= 0 || currentLayerIndex == 0 else {
             return
         }
