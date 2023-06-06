@@ -10,7 +10,7 @@ import SwiftUI
 import UIKit
 
 // MARK: Color
-
+@available(iOS 14.0, *)
 public extension Color {
     var isLight: Bool {
         var brightness: CGFloat = 0
