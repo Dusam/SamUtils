@@ -27,6 +27,7 @@ extension Color {
 }
 
 // MARK: Binding
+@available(iOS, introduced: 13.0)
 extension Binding {
      func toUnwrapped<T>(defaultValue: T) -> Binding<T> where Value == Optional<T>  {
         Binding<T>(get: { self.wrappedValue ?? defaultValue }, set: { self.wrappedValue = $0 })
