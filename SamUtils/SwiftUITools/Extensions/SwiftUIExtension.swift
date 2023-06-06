@@ -10,9 +10,8 @@ import SwiftUI
 import UIKit
 
 // MARK: Color
-
-@available(iOS 14.0, *)
-extension Color {
+public extension Color {
+    @available(iOS 14.0, *)
     var isLight: Bool {
         var brightness: CGFloat = 0
         var alpha: CGFloat = 0
@@ -21,13 +20,14 @@ extension Color {
         return brightness > 0.6 ? true : false
     }
     
+    @available(iOS 14.0, *)
     var uiColor: UIColor {
         return UIColor(self)
     }
 }
 
 // MARK: Binding
-extension Binding {
+public extension Binding {
      func toUnwrapped<T>(defaultValue: T) -> Binding<T> where Value == Optional<T>  {
         Binding<T>(get: { self.wrappedValue ?? defaultValue }, set: { self.wrappedValue = $0 })
     }
