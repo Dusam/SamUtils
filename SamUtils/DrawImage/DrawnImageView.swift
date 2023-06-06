@@ -168,7 +168,9 @@ class DrawnImageView: UIImageView {
     }
     
     private func addLine(_ beginPoint: CGPoint, _ lastPoint: CGPoint) {
-        path = UIBezierPath(from: beginPoint, to: lastPoint)
+        path = UIBezierPath()
+        path.move(to: beginPoint)
+        path.addLine(to: lastPoint)
     }
     
     private func addCircle(_ beginPoint: CGPoint, _ lastPoint: CGPoint) {

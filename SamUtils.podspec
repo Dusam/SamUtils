@@ -56,6 +56,7 @@ Pod::Spec.new do |s|
 
   # Introduce when needed
   s.subspec 'SwiftUITools' do |sp|
+    sp.ios.deployment_target = '14.0'
     sp.source_files  = 'SamUtils/SwiftUITools/**/*.swift'
   end
 
