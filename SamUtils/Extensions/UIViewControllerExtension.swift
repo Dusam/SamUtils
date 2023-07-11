@@ -58,36 +58,61 @@ public extension UIViewController {
     ///   - navigationColor: Navigation bar color
     ///   - backImage: Back button image.
     func setBackButton(title: String,
-                       titleColor: UIColor = .black,
-                       navigationColor: UIColor = .white,
                        backImage: UIImage? = nil) {
+        
+        self.title = title
+        if backImage != nil {
+            let back = UIBarButtonItem(image: backImage, style: .plain, target: self, action: nil)
+            self.navigationController?.navigationBar.topItem?.backBarButtonItem = back
+        } else {
+            if #available(iOS 14.0, *) {
+                self.navigationController?.navigationBar.topItem?.backButtonDisplayMode = .minimal
+            } else {
+                let back = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+                self.navigationController?.navigationBar.topItem?.backBarButtonItem = back
+            }
+        }
+    }
+    
+    func setNavigationColor(titleColor: UIColor? = nil, navigationColor: UIColor = .white) {
+        
         if #available(iOS 15, *) {
-            self.title = title
-            
             let standard = UINavigationBarAppearance()
             standard.configureWithOpaqueBackground()
-            
-            standard.titleTextAttributes = [.foregroundColor: UIColor.white]
             standard.backgroundColor = navigationColor
             
-            self.navigationController?.navigationBar.tintColor = titleColor
-//            self.navigationController?.navigationBar.standardAppearance = standard
-//            self.navigationController?.navigationBar.scrollEdgeAppearance = standard
+            if navigationColor.isLight {
+                standard.titleTextAttributes = [.foregroundColor: UIColor.black]
+                self.navigationController?.navigationBar.tintColor = .black
+            } else {
+                standard.titleTextAttributes = [.foregroundColor: UIColor.white]
+                self.navigationController?.navigationBar.tintColor = .white
+            }
             
-            self.navigationController?.navigationBar.backItem?.title = ""
-            let back = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-            self.navigationController?.navigationBar.topItem?.backBarButtonItem = back
+            if titleColor != nil {
+                standard.titleTextAttributes = [.foregroundColor: titleColor!]
+                self.navigationController?.navigationBar.tintColor = titleColor
+            }
+            
+            self.navigationController?.navigationBar.standardAppearance = standard
+            self.navigationController?.navigationBar.scrollEdgeAppearance = standard
             
         } else {
-            self.title = title
             self.navigationController?.navigationBar.barTintColor = navigationColor
-            self.navigationController?.navigationBar.tintColor = titleColor
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: titleColor]
             
-            let back = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-            self.navigationController?.navigationBar.topItem?.backBarButtonItem = back
+            if navigationColor.isLight {
+                self.navigationController?.navigationBar.tintColor = .black
+                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+            } else {
+                self.navigationController?.navigationBar.tintColor = .white
+                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            }
+            
+            if titleColor != nil {
+                self.navigationController?.navigationBar.tintColor = titleColor
+                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: titleColor!]
+            }
         }
-        
     }
 }
 
